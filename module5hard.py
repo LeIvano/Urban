@@ -33,6 +33,10 @@ class UrTube:
         self.current_user = None
 
     def log_in(self, nickname, password):
+        if isinstance(self.current_user, User):
+            print('Выйдите из аккаунта, чтобы войти в другой')
+            return
+
         not_found = True
         for user in self.users:
             if user.nickname == nickname:
@@ -54,6 +58,7 @@ class UrTube:
         self.current_user = new_user
 
     def log_out(self):
+        print(f'Вы вышли из аккаунта {self.current_user}')
         self.current_user = None
 
     def add(self, *args):
@@ -104,6 +109,11 @@ print(ur.get_videos('ПРОГ'))
 # Проверка на вход пользователя и возрастное ограничение
 ur.watch_video('Для чего девушкам парень программист?')
 ur.register('vasya_pupkin', 'lolkekcheburek', 13)
+
+ur.log_in('vasya_pupkin', 'lolkekcheburek')
+ur.log_out()
+ur.log_in('vasya_pupkin', 'lolkekcheburek')
+
 ur.watch_video('Для чего девушкам парень программист?')
 ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
 ur.watch_video('Для чего девушкам парень программист?')
