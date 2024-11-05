@@ -10,7 +10,7 @@ class Figure:
         self.filled = filled
 
     def get_color(self):
-        return self.__color
+        return list(self.__color)
 
     def __is_valid_color(self, *color):
         if isinstance(color, tuple):
