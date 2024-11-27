@@ -4,7 +4,7 @@ import time
 directory = os.getcwd()
 for root, dirs, files in os.walk(directory):
     for file in files:
-        filepath = '\\'.join([directory, file])
+        filepath = os.path.join(file, directory)
         if not os.path.exists(filepath):
             continue
         filetime = os.path.getmtime(filepath)
@@ -12,4 +12,5 @@ for root, dirs, files in os.walk(directory):
         filesize = os.path.getsize(filepath)
         parent_dir = os.path.dirname(filepath)
         print(
-            f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
+            f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, '
+            f'Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
