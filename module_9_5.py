@@ -13,16 +13,15 @@ class Iterator:
         self.pointer = start
 
     def __iter__(self):
-        self.pointer = self.start
+        self.pointer = self.start - self.step
         return self
 
     def __next__(self):
-        ptr = self.pointer
-        if self.step > 0 and ptr > self.stop or self.step < 0 and ptr < self.stop:
+        self.pointer += self.step
+        if self.step > 0 and self.pointer > self.stop or self.step < 0 and self.pointer < self.stop:
             raise StopIteration
 
-        self.pointer += self.step
-        return ptr
+        return self.pointer
 
 
 try:
