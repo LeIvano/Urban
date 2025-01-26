@@ -29,7 +29,8 @@ def introspection_info(obj):
     return dictonary
 
 
-sth = MyClass()
-result = introspection_info(sth)
+if __name__ == "__main__":
+    sth = MyClass()
+    result = introspection_info(sth)
 
-pprint(result)
+    pprint(result)
